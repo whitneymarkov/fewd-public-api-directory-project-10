@@ -1,0 +1,60 @@
+// ======================================
+//  Utilities mixins
+// ======================================
+// Standard font
+@mixin standard(
+    $color: $color-dark,
+    $size: 1rem,
+    $height: 1.5,
+    $font: $font-stack-primary
+) {
+    color: $color;
+    font-size: $size;
+    line-height: $height;
+    font-family: $font;
+}
+
+// Bold font
+@mixin bold(
+    $color: $color-dark,
+    $size: 1rem,
+    $height: 1.5,
+    $font: $font-stack-secondary
+) {
+    color: $color;
+    font-size: $size;
+    line-height: $height;
+    font-family: $font;
+}
+
+// Rounded Elements
+@mixin roundImage($dimensions) {
+    width: $dimensions;
+    height: $dimensions;
+    border-radius: $round;
+}
+
+// Desaturate
+@mixin desaturate {
+    filter: grayscale(100%);
+}
+
+// Center Elements
+@mixin center($width) {
+  width: $width;
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Flex container
+@mixin flex(
+    $disp: flex,
+    $dir: null,
+    $wrap: null,
+    $just: null) {
+    display: $disp;
+    flex-direction: $dir;
+    flex-wrap: $wrap;
+    justify-content: $just;
+}

@@ -1,0 +1,15 @@
+// ======================================
+//  Layout Header
+// ======================================
+
+header {
+    .banner {
+        @include flex($dir: column, $just: center);
+        align-items: center;
+    }
+    form {
+        margin: 0 auto;
+        @include flex($just: space around);
+        align-items: center;
+    }
+}

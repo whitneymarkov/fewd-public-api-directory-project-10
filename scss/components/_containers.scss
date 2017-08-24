@@ -1,0 +1,48 @@
+// ======================================
+//  Components Containers
+// ======================================
+.wrapper {
+    padding: 1em;
+    @media ($brk-tablet) {
+        margin-top: 2em;
+    }
+    @media ($brk-desktop) {
+        margin-top: 3em;
+    }
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        li {
+            padding: .5em;
+            margin-bottom: 2em;
+            @media ($brk-desktop) {
+                margin-bottom: 3em;
+            }
+        }
+    }
+}
+
+// Employee Images
+.employeeImage {
+    width: 20%;
+    img {
+        max-width: 128px;
+        @include roundImage(100%);
+        @include desaturate();
+    }
+}
+
+// Employee Info
+.employeeInfo {
+    width: 80%;
+    padding: 0 0 0 1em;
+    h3 {
+        margin: 0;
+    }
+    span {
+        word-wrap: break-word;
+        display: block;
+        font-size: .8em;
+    }
+}
