@@ -9,17 +9,37 @@
     @media ($brk-desktop) {
         margin-top: 3em;
     }
-    ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        li {
-            padding: .5em;
-            margin-bottom: 2em;
-            @media ($brk-desktop) {
-                margin-bottom: 3em;
-            }
+}
+
+.employeeList {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    li {
+        padding: .5em;
+        margin-bottom: 2em;
+        @media ($brk-desktop) {
+            margin-bottom: 3em;
         }
+    }
+}
+
+.employee {
+    cursor: pointer;
+    & h3:after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: -1;
+        background: rgba($color-accent, 0);
+        content: '';
+        display: block;
+        height: .55em;
+        transition: .3s ease-in-out;
+    }
+    &:hover h3:after {
+        background: rgba($color-accent, .5);
     }
 }
 
@@ -37,12 +57,16 @@
 .employeeInfo {
     width: 80%;
     padding: 0 0 0 1em;
+    @media ($brk-desktop) {
+        padding: 0 0 0 .5em;
+    }
     h3 {
+        display: inline-block;
         margin: 0;
+        position: relative;
     }
     span {
         word-wrap: break-word;
         display: block;
-        font-size: .8em;
     }
 }

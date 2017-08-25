@@ -4,18 +4,19 @@
 
 .wrapper {
     @include center(100%);
-    ul {
-        @include flex($just: space-around, $wrap: wrap);
-        li {
-            @include flex();
-            width: 100%;
-            align-items: center;
-            @media ($brk-tablet) {
-                width: 49.5%;
-            }
-            @media ($brk-desktop) {
-                width: 33%;
-            }
+}
+
+.employeeList {
+    @include flex($just: space-around, $wrap: wrap);
+    li {
+        @include flex();
+        width: 100%;
+        align-items: center;
+        @media ($brk-tablet) {
+            width: 49.5%;
+        }
+        @media ($brk-desktop) {
+            width: 33%;
         }
     }
 }

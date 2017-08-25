@@ -15,20 +15,21 @@ body {
   max-width: 1000px;
   margin-left: auto;
   margin-right: auto; }
-  .wrapper ul {
+
+.employeeList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; }
+  .employeeList li {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around; }
-    .wrapper ul li {
-      display: flex;
-      width: 100%;
-      align-items: center; }
-      @media (min-width: 768px) {
-        .wrapper ul li {
-          width: 49.5%; } }
-      @media (min-width: 1024px) {
-        .wrapper ul li {
-          width: 33%; } }
+    width: 100%;
+    align-items: center; }
+    @media (min-width: 768px) {
+      .employeeList li {
+        width: 49.5%; } }
+    @media (min-width: 1024px) {
+      .employeeList li {
+        width: 33%; } }
 
 header .banner {
   display: flex;
@@ -38,7 +39,7 @@ header .banner {
 header form {
   margin: 0 auto;
   display: flex;
-  justify-content: space around;
+  justify-content: space-around;
   align-items: center; }
 
 header {
@@ -54,28 +55,29 @@ header {
   header .searchContainer {
     width: 100%;
     max-width: 430px; }
-    header .searchContainer form {
-      width: 80%;
-      border: 4px solid #fcfcfc;
-      background-color: rgba(40, 47, 51, 0.3); }
-      header .searchContainer form input {
-        width: 100%;
-        background-color: transparent;
-        border: none;
-        outline: none;
-        padding: 0 .5em; }
-        header .searchContainer form input:focus {
-          outline: none;
-          color: #fcfcfc; }
-      header .searchContainer form button {
-        cursor: pointer;
-        background-color: transparent;
-        border: none;
-        padding: 2px; }
-        header .searchContainer form button:focus {
-          outline: none; }
-        header .searchContainer form button svg {
-          stroke: #fcfcfc; }
+
+.employeeSearchForm {
+  width: 80%;
+  border: 4px solid #fcfcfc;
+  background-color: rgba(40, 47, 51, 0.3); }
+  .employeeSearchForm input {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 0 .5em;
+    color: #fcfcfc; }
+    .employeeSearchForm input:focus {
+      outline: none; }
+  .employeeSearchForm button {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    padding: 2px; }
+    .employeeSearchForm button:focus {
+      outline: none; }
+    .employeeSearchForm button svg {
+      stroke: #fcfcfc; }
 
 .wrapper {
   padding: 1em; }
@@ -85,16 +87,33 @@ header {
   @media (min-width: 1024px) {
     .wrapper {
       margin-top: 3em; } }
-  .wrapper ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0; }
-    .wrapper ul li {
-      padding: .5em;
-      margin-bottom: 2em; }
-      @media (min-width: 1024px) {
-        .wrapper ul li {
-          margin-bottom: 3em; } }
+
+.employeeList {
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+  .employeeList li {
+    padding: .5em;
+    margin-bottom: 2em; }
+    @media (min-width: 1024px) {
+      .employeeList li {
+        margin-bottom: 3em; } }
+
+.employee {
+  cursor: pointer; }
+  .employee h3:after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+    background: rgba(201, 174, 104, 0);
+    content: '';
+    display: block;
+    height: .55em;
+    transition: .3s ease-in-out; }
+  .employee:hover h3:after {
+    background: rgba(201, 174, 104, 0.5); }
 
 .employeeImage {
   width: 20%; }
@@ -108,34 +127,89 @@ header {
 .employeeInfo {
   width: 80%;
   padding: 0 0 0 1em; }
+  @media (min-width: 1024px) {
+    .employeeInfo {
+      padding: 0 0 0 .5em; } }
   .employeeInfo h3 {
-    margin: 0; }
+    display: inline-block;
+    margin: 0;
+    position: relative; }
   .employeeInfo span {
     word-wrap: break-word;
-    display: block;
-    font-size: .8em; }
+    display: block; }
 
 body {
   color: #282f33;
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: 1.2;
   font-family: "Noto Serif", serif; }
-  body header h1 {
-    color: #fcfcfc;
-    font-size: 1.8rem;
-    line-height: 1.5;
-    font-family: "Ramabhadra", sans-serif;
-    font-weight: 400; }
-  body header form input {
-    color: #282f33;
-    font-size: 1rem;
-    line-height: 1.5;
-    font-family: "Noto Serif", serif; }
-  body .wrapper h3 {
-    color: #282f33;
-    font-size: 1.1em;
-    line-height: 1.5;
-    font-family: "Ramabhadra", sans-serif;
-    font-weight: 400; }
+
+header h1 {
+  color: #fcfcfc;
+  font-size: 1.8rem;
+  line-height: 1.5;
+  font-family: "Ramabhadra", sans-serif;
+  font-weight: 400; }
+header form input {
+  color: #282f33;
+  font-size: 1rem;
+  line-height: 1.2;
+  font-family: "Noto Serif", serif; }
+
+.wrapper h3 {
+  color: #282f33;
+  font-size: 1.2em;
+  line-height: 1.5;
+  font-family: "Ramabhadra", sans-serif;
+  font-weight: 400; }
+.wrapper span {
+  font-size: .9em; }
+
+#overlay {
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none; }
+
+#modal {
+  position: relative;
+  background-color: #fcfcfc;
+  border-radius: 3px;
+  margin: 0 auto;
+  top: 20%;
+  width: 95%;
+  max-width: 30em;
+  text-align: center;
+  padding: 2em; }
+  #modal .employeeImage {
+    margin: 0 auto;
+    width: 100%; }
+  #modal .employeeInfo {
+    margin: 0 auto;
+    padding: 0; }
+
+.navigation {
+  cursor: pointer;
+  position: absolute;
+  z-index: 3;
+  background-color: transparent;
+  border: none;
+  outline: none; }
+  .navigation svg {
+    stroke: rgba(40, 47, 51, 0.5);
+    transition: .3s ease-in-out; }
+  .navigation:hover svg {
+    stroke: #282f33; }
+
+#previous {
+  left: 0;
+  top: 45%; }
+
+#next {
+  right: 0;
+  top: 45%; }
 
 /*# sourceMappingURL=application.css.map */

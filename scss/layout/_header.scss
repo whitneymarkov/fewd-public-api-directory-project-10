@@ -9,7 +9,7 @@ header {
     }
     form {
         margin: 0 auto;
-        @include flex($just: space around);
+        @include flex($just: space-around);
         align-items: center;
     }
 }

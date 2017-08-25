@@ -3,19 +3,24 @@
 // ======================================
 body {
     @include standard();
-    header {
-        h1 {
-            @include bold($size: 1.8rem, $color: $color-light);
-            font-weight: 400;
-        }
-        form input {
-            @include standard();
-        }
+}
+
+header {
+    h1 {
+        @include bold($size: 1.8rem, $color: $color-light);
+        font-weight: 400;
     }
-    .wrapper {
-        h3 {
-            @include bold($size: 1.1em);
-            font-weight: 400;
-        }
+    form input {
+        @include standard();
+    }
+}
+
+.wrapper {
+    h3 {
+        @include bold($size: 1.2em);
+        font-weight: 400;
+    }
+    span {
+        font-size: .9em;
     }
 }

@@ -1,0 +1,63 @@
+// ======================================
+//  Components Modal
+// ======================================
+
+#overlay {
+    background: rgba(#000, .5);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+#modal {
+    position: relative;
+    background-color: $color-light;
+    border-radius: $br;
+    margin: 0 auto;
+    top: 20%;
+    width: 95%;
+    max-width: 30em;
+    text-align: center;
+    padding: 2em;
+
+    .employeeImage {
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .employeeInfo {
+        margin: 0 auto;
+        padding: 0;
+    }
+
+}
+
+.navigation {
+    cursor: pointer;
+    position: absolute;
+    z-index: 3;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    svg {
+        stroke: rgba($color-dark, .5);
+        transition: .3s ease-in-out;
+
+    }
+    &:hover svg {
+        stroke: rgba($color-dark, 1);
+    }
+}
+
+#previous {
+    left: 0;
+    top: 45%;
+}
+
+#next {
+    right: 0;
+    top: 45%;
+}
