@@ -29,6 +29,7 @@ header {
 
 .employeeSearchForm {
     width: 80%;
+    min-width: 300px;
     border: 4px solid $color-light;
     background-color: rgba($color-dark, .3);
     input {

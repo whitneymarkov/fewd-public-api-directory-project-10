@@ -17,11 +17,14 @@
     background-color: $color-light;
     border-radius: $br;
     margin: 0 auto;
-    top: 20%;
+    top: 10%;
     width: 95%;
     max-width: 30em;
     text-align: center;
     padding: 2em;
+    @media ($brk-tablet) {
+        top: 20%;
+    }
 
     .employeeImage {
         margin: 0 auto;
@@ -45,10 +48,6 @@
         display: block;
     }
 
-}
-
-.birthday:before {
-    content: 'Birthday: '
 }
 
 .navigation {

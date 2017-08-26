@@ -58,6 +58,7 @@ header {
 
 .employeeSearchForm {
   width: 80%;
+  min-width: 300px;
   border: 4px solid #fcfcfc;
   background-color: rgba(40, 47, 51, 0.3); }
   .employeeSearchForm input {
@@ -179,10 +180,16 @@ header form input {
     font-family: "Ramabhadra", sans-serif;
     font-weight: 400; }
   #modal .employeeInfo {
-    font-size: .95em; }
+    font-size: .85em; }
+    @media (min-width: 768px) {
+      #modal .employeeInfo {
+        font-size: .95em; } }
   #modal .additionalInformation {
     line-height: 2;
-    font-size: .95em; }
+    font-size: .85em; }
+    @media (min-width: 768px) {
+      #modal .additionalInformation {
+        font-size: .95em; } }
 
 #overlay {
   background: rgba(0, 0, 0, 0.5);
@@ -198,11 +205,14 @@ header form input {
   background-color: #fcfcfc;
   border-radius: 3px;
   margin: 0 auto;
-  top: 20%;
+  top: 10%;
   width: 95%;
   max-width: 30em;
   text-align: center;
   padding: 2em; }
+  @media (min-width: 768px) {
+    #modal {
+      top: 20%; } }
   #modal .employeeImage {
     margin: 0 auto;
     width: 100%; }
@@ -217,9 +227,6 @@ header form input {
     border-top: 1px solid rgba(40, 47, 51, 0.1); }
   #modal .username {
     display: block; }
-
-.birthday:before {
-  content: "Birthday: "; }
 
 .navigation {
   cursor: pointer;
