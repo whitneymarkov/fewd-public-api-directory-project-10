@@ -68,6 +68,15 @@ $navigation.click(function() {
     arrowVisibility();
 });
 
+// Swipe functionality
+$modal.on('swiperight', function() {
+    alert('you swiped right');
+})
+$modal.on('swipeleft', function() {
+    alert('you swiped left');
+})
+
+
 // Close and clear modal when overlay is clicked
 $overlay.click(function(e) {
     if (e.target.id === ('overlay')) {
