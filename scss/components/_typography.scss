@@ -24,3 +24,21 @@ header {
         font-size: .9em;
     }
 }
+
+#modal {
+    color: lighten($color-dark, 15%);
+
+    h3 {
+        @include bold($size: 1.4em);
+        font-weight: 400;
+    }
+
+    .employeeInfo {
+        font-size: .95em;
+    }
+
+    .additionalInformation {
+        line-height: 2;
+        font-size: .95em;
+    }
+}

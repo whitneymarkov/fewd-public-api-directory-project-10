@@ -137,6 +137,11 @@ header {
   .employeeInfo span {
     word-wrap: break-word;
     display: block; }
+  .employeeInfo .username {
+    display: none; }
+
+.additionalInformation {
+  display: none; }
 
 body {
   color: #282f33;
@@ -165,6 +170,20 @@ header form input {
 .wrapper span {
   font-size: .9em; }
 
+#modal {
+  color: #4a575e; }
+  #modal h3 {
+    color: #282f33;
+    font-size: 1.4em;
+    line-height: 1.5;
+    font-family: "Ramabhadra", sans-serif;
+    font-weight: 400; }
+  #modal .employeeInfo {
+    font-size: .95em; }
+  #modal .additionalInformation {
+    line-height: 2;
+    font-size: .95em; }
+
 #overlay {
   background: rgba(0, 0, 0, 0.5);
   width: 100%;
@@ -190,6 +209,17 @@ header form input {
   #modal .employeeInfo {
     margin: 0 auto;
     padding: 0; }
+  #modal .additionalInformation {
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding-top: 1em;
+    border-top: 1px solid rgba(40, 47, 51, 0.1); }
+  #modal .username {
+    display: block; }
+
+.birthday:before {
+  content: "Birthday: "; }
 
 .navigation {
   cursor: pointer;

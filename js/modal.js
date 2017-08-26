@@ -68,13 +68,17 @@ $navigation.click(function() {
     arrowVisibility();
 });
 
-// Swipe functionality
-$modal.on('swiperight', function() {
-    alert('you swiped right');
-})
-$modal.on('swipeleft', function() {
-    alert('you swiped left');
-})
+// Keyboard arrow functionality
+$(document).keydown(function(e) {
+    if (e.keyCode == 39 && thisEmployee.parent().next().length > 0) {
+        getNextEmployee();
+    }
+
+    if (e.keyCode == 37 && thisEmployee.parent().prev().length > 0) {
+        getPrevEmployee();
+    }
+    arrowVisibility();
+});
 
 
 // Close and clear modal when overlay is clicked

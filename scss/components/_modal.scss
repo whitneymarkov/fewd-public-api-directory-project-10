@@ -33,6 +33,22 @@
         padding: 0;
     }
 
+    .additionalInformation {
+        display: block;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        padding-top: 1em;
+        border-top: 1px solid rgba($color-dark, .1);
+    }
+
+    .username {
+        display: block;
+    }
+
+}
+
+.birthday:before {
+    content: 'Birthday: '
 }
 
 .navigation {
