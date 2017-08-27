@@ -48,8 +48,10 @@ header {
         background-color: transparent;
         border: none;
         padding: 2px;
+        outline: none;
+        transition: 0.3s ease-in-out;
         &:focus {
-            outline: none;
+            transform: scale(1.1);
         }
         svg {
             stroke: $color-light;

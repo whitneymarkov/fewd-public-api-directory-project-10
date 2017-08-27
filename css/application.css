@@ -74,9 +74,11 @@ header {
     cursor: pointer;
     background-color: transparent;
     border: none;
-    padding: 2px; }
+    padding: 2px;
+    outline: none;
+    transition: 0.3s ease-in-out; }
     .employeeSearchForm button:focus {
-      outline: none; }
+      transform: scale(1.1); }
     .employeeSearchForm button svg {
       stroke: #fcfcfc; }
 
@@ -101,7 +103,11 @@ header {
         margin-bottom: 3em; } }
 
 .employee {
-  cursor: pointer; }
+  cursor: pointer;
+  outline: none;
+  transition: 0.3s ease-in-out; }
+  .employee:focus {
+    transform: scale(1.1); }
   .employee h3:after {
     position: absolute;
     bottom: 0;
@@ -238,6 +244,9 @@ header form input {
   .navigation svg {
     stroke: rgba(40, 47, 51, 0.5);
     transition: .3s ease-in-out; }
+  .navigation:focus svg {
+    transform: scale(1.5);
+    stroke: #282f33; }
   .navigation:hover svg {
     stroke: #282f33; }
 

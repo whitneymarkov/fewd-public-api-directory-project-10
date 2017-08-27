@@ -62,6 +62,10 @@
         transition: .3s ease-in-out;
 
     }
+    &:focus svg {
+        transform: scale(1.5);
+        stroke: rgba($color-dark, 1);
+    }
     &:hover svg {
         stroke: rgba($color-dark, 1);
     }

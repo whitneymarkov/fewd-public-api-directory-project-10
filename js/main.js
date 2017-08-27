@@ -21,6 +21,9 @@ $('form').submit(function(e) {
 // Hide clear button
 $('#clear').hide();
 
+// Hide search results message
+$('#searchResults').hide();
+
 // Toggle button visibilty on focus, keyup, and clear
 $('#search').focus(searchButtonVisibility).keyup(searchButtonVisibility).blur(searchButtonVisibility);
 //$('#clear').click(searchButtonVisibility);
@@ -117,6 +120,7 @@ $.ajax({
         ajaxHTML += '</ul>';
         // add html inside wrapper
         $('#employees').html(ajaxHTML);
+        addTabIndexEmployees(); // dynamically add tabindex
 
 //========================================================================================
 // Modal (to initialise only after ajax is complete)
@@ -172,6 +176,30 @@ $.ajax({
             }
         }
 
+        function addTabIndexEmployees() {
+            $('.employee').each(function(i) {
+                $(this).attr('tabindex', i + 3);
+            });
+        }
+
+        function removeTabIndexEmployees() {
+            $('.employee').each(function() {
+                $(this).removeAttr('tabindex');
+            });
+        }
+
+        function addTabIndexArrows() {
+            $('.navigation').each(function(i) {
+                $(this).attr('tabindex', i + 1);
+            });
+        }
+
+        function removeTabIndexArrows() {
+            $('.navigation').each(function(i) {
+                $(this).removeAttr('tabindex');
+            });
+        }
+
          // Build overlay, modal, and navigation
         $modal.append($navigation);
         $overlay.append($modal);
@@ -185,6 +213,15 @@ $.ajax({
             searchButtonVisibility(); // toggle search buttons
             filterEmployees(); // run filter to re-populate page
             arrowVisibility();
+            removeTabIndexEmployees(); //prevent user from using tab when modal open
+            addTabIndexArrows();
+        });
+
+        //Register enter key as click event on li
+        $employee.keydown(function(e) {
+            if (e.keyCode === 13) {
+                $(this).click();
+            }
         });
 
         // Arrow functionality
@@ -217,6 +254,8 @@ $.ajax({
             if (e.target.id === ('overlay')) {
                 $overlay.hide();
                 clearInfo();
+                addTabIndexEmployees(); //restore tabindex upon leaving modal
+                removeTabIndexArrows(); //remove arrow tabindex
             }
         });
 
@@ -225,6 +264,8 @@ $.ajax({
             if (e.keyCode == 27) {
                 $overlay.hide();
                 clearInfo();
+                addTabIndexEmployees(); //restore tabindex upon leaving modal
+                removeTabIndexArrows(); //remove arrow tabindex
             }
         });
 
@@ -251,6 +292,7 @@ $.ajax({
         }
 
         $('#search').keyup(filterEmployees);
+        $('#clear').click(filterEmployees);
 
     } // end success ajax
 }); // end ajax
