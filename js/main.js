@@ -282,11 +282,11 @@ $.ajax({
                 var charLength = input.length;
                 if (firstName.substring(0, charLength).toLowerCase() === input.substring(0, charLength).toLowerCase() ||
                     lastName.substring(0, charLength).toLowerCase() === input.substring(0, charLength).toLowerCase()    ) {
-                    $(this).show('slow');
+                    $(this).show();
                 } else if (input === '') {
-                     $(this).show('slow');
+                     $(this).show();
                 } else {
-                    $(this).hide('slow');
+                    $(this).hide();
                 }
             });
         }
