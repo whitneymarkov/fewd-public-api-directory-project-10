@@ -4,7 +4,7 @@
 
 // Toggle button visibilty based on input field
 function searchButtonVisibility() {
-    if($(this).val().length > 0) {
+    if($('#search').val().length > 0) {
         $('#submit').hide();
         $('#clear').show();
     } else {
@@ -22,8 +22,14 @@ $('form').submit(function(e) {
 $('#clear').hide();
 
 // Toggle button visibilty on focus, keyup, and clear
-$('#search').focus(searchButtonVisibility).keyup(searchButtonVisibility);
-$('#clear').click(searchButtonVisibility);
+$('#search').focus(searchButtonVisibility).keyup(searchButtonVisibility).blur(searchButtonVisibility);
+//$('#clear').click(searchButtonVisibility);
+
+$('#clear').click(function() {
+    $('#search').val('');
+    searchButtonVisibility();
+    $('#search').focus();
+});
 
 //========================================================================================
 // AJAX
@@ -66,7 +72,9 @@ $.ajax({
 
             // Name variables
             var firstName = capitalise(data.results[i].name.first);
+            var firstNameUnformatted = data.results[i].name.first;
             var lastName = capitalise(data.results[i].name.last);
+            var lastNameUnformatted = data.results[i].name.last;
             var fullName = firstName + ' ' + lastName;
 
             // Contact variables
@@ -84,12 +92,13 @@ $.ajax({
             var birthdate = convertDate(data.results[i].dob);
             var img = data.results[i].picture.large;
 
-            ajaxHTML += '<li class="employee">' +
+            ajaxHTML += '<li class="employee" data-first-name="' +
+                            firstNameUnformatted + '" ' + 'data-last-name="' + lastNameUnformatted + '">' +
                             '<div class="employeeImage">' +
                             '<img src="' + img + '" alt="Employee Portrait">' +
                             '</div>' +
                             '<div class="employeeInfo">' +
-                            '<h3 class="employeeName">' + fullName + '</h3>' +
+                            '<h3>' + fullName + '</h3>' +
                             '<span class="username">' + userName + '</span>' +
                             '<span>' + email + '</span>' +
                             '<span>' + area + ', ' + country + '</span>' +
@@ -101,7 +110,7 @@ $.ajax({
                             '<span>' + postalCode + ', ' + '</span>' +
                             '<span>' + area + ', ' + country + '</span>' +
                             '</div>' +
-                            '<span class="birthday" class="employeeBirthday"> Birthday: ' + birthdate + '</span>' +
+                            '<span class="birthday"> Birthday: ' + birthdate + '</span>' +
                             '</div>' +
                             '</li>';
         }
@@ -172,6 +181,9 @@ $.ajax({
         $employee.click(function() {
             getCurrentEmployee(this);
             $overlay.show();
+            $('#search').val(''); // reset input field
+            searchButtonVisibility(); // toggle search buttons
+            filterEmployees(); // run filter to re-populate page
             arrowVisibility();
         });
 
@@ -215,6 +227,30 @@ $.ajax({
                 clearInfo();
             }
         });
+
+//========================================================================================
+// Filter (to initialise only after ajax is complete)
+//========================================================================================
+        function filterEmployees() {
+            var input = $('#search').val().toLowerCase();
+
+            $('.employee').each(function(index, element) {
+                var firstName = $(this).data('first-name').toLowerCase();
+                var lastName = $(this).data('last-name').toLowerCase();
+
+                var charLength = input.length;
+                if (firstName.substring(0, charLength).toLowerCase() === input.substring(0, charLength).toLowerCase() ||
+                    lastName.substring(0, charLength).toLowerCase() === input.substring(0, charLength).toLowerCase()    ) {
+                    $(this).show('slow');
+                } else if (input === '') {
+                     $(this).show('slow');
+                } else {
+                    $(this).hide('slow');
+                }
+            });
+        }
+
+        $('#search').keyup(filterEmployees);
 
     } // end success ajax
 }); // end ajax
