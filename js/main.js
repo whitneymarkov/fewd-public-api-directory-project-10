@@ -96,7 +96,9 @@ $.ajax({
             var img = data.results[i].picture.large;
 
             ajaxHTML += '<li class="employee" data-first-name="' +
-                            firstNameUnformatted + '" ' + 'data-last-name="' + lastNameUnformatted + '">' +
+                            firstNameUnformatted + '" ' +
+                            'data-last-name="' + lastNameUnformatted + '"' +
+                            'data-username="' + userName + '">' +
                             '<div class="employeeImage">' +
                             '<img src="' + img + '" alt="Employee Portrait">' +
                             '</div>' +
@@ -104,7 +106,7 @@ $.ajax({
                             '<h3>' + fullName + '</h3>' +
                             '<span class="username">' + userName + '</span>' +
                             '<span>' + email + '</span>' +
-                            '<span>' + area + ', ' + country + '</span>' +
+                            '<span>' + area + '</span>' +
                             '</div>' +
                             '<div class="additionalInformation">' +
                             '<span>' + phone + '</span>' +
@@ -278,10 +280,13 @@ $.ajax({
             $('.employee').each(function(index, element) {
                 var firstName = $(this).data('first-name').toLowerCase();
                 var lastName = $(this).data('last-name').toLowerCase();
+                var userName = $(this).data('username').toLowerCase();
 
                 var charLength = input.length;
                 if (firstName.substring(0, charLength).toLowerCase() === input.substring(0, charLength).toLowerCase() ||
-                    lastName.substring(0, charLength).toLowerCase() === input.substring(0, charLength).toLowerCase()    ) {
+                    lastName.substring(0, charLength).toLowerCase() === input.substring(0, charLength).toLowerCase()  ||
+                    userName.substring(0, charLength).toLowerCase() === input.substring(0, charLength).toLowerCase()
+                  ) {
                     $(this).show();
                 } else if (input === '') {
                      $(this).show();
